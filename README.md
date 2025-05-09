@@ -1,12 +1,22 @@
+<div align="center">
+
 # 🚀 AutoStash - Linux Backup System
 
-<div align="center">
+<img src="https://64.media.tumblr.com/4e3ed52f25cff0e7b04babdd19f8e144/tumblr_mkiux8S7Xe1rn57sio1_400.gif" alt="AutoStash Backup System" />
+
+
+<div>
   <h3>Team Project - Linux System Programming</h3>
   <p>A comprehensive backup solution developed as part of our Linux System Programming course</p>
 </div>
 
+</div>
+
+
 ## 👥 Team Members
 
+<div align="center">
+  
 <table>
 <tr>
 <td align="center">
@@ -30,16 +40,19 @@
 </tr>
 </table>
 
+</div>
+
 ## 📋 Project Overview
 
 AutoStash is a Linux backup solution developed as our team project for the Linux System Programming course. It demonstrates our understanding of Linux system programming concepts, including file operations, process management, and system monitoring.
 
 ### ✨ Key Features
 
+  
 <table>
 <tr>
 <td width="50%">
-
+  
 - 🔒 **Security Features**
   - GPG encryption implementation
   - Secure file handling
@@ -47,8 +60,8 @@ AutoStash is a Linux backup solution developed as our team project for the Linux
 
 - ⚡ **System Integration**
   - Resource monitoring
-  - Process management
-  - File system operations
+  - Device Specifications 
+  - Desktop name
 
 </td>
 <td width="50%">
@@ -197,7 +210,6 @@ We would like to thank our course instructor and mentors for their guidance thro
 
 ---
 
-<div align="center">
-  <p>Developed as part of Linux System Programming Course</p>
-  <p>© 2024 Team AutoStash</p>
-</div>
+<p>Developed as part of Linux System Programming Course</p>
+<p>© 2024 Team AutoStash</p>
+
