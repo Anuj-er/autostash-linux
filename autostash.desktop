@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=AutoStash
+Comment=Linux Backup System
+Exec=/Users/anujsiwach/Downloads/AutoStash/dist/autostash
+Terminal=false
+Categories=Utility;System;Backup;
+Keywords=backup;system;linux;
+StartupNotify=true
