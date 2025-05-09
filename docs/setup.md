@@ -16,7 +16,7 @@
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/autostash.git
+git clone https://github.com/Anuj-er/autostash-linux.git
 cd autostash
 ```
 

@@ -141,5 +141,5 @@ The application has three main tabs:
 ## Support
 For additional help:
 - Email: support@autostash.com
-- GitHub Issues: [Report Issues](https://github.com/yourusername/autostash/issues)
-- Documentation: [Full Documentation](https://autostash.com/docs) 
+- GitHub Issues: [Report Issues](https://github.com/Anuj-er/autostash-linux/issues)
+- Documentation: [Full Documentation](https://github.com/Anuj-er/autostash-linux/docs) 

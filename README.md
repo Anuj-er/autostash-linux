@@ -143,7 +143,7 @@ This project helped us gain practical experience in:
 ### For Developers
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/autostash.git
+git clone https://github.com/Anuj-er/autostash-linux.git
 cd autostash
 
 # Create and activate virtual environment
