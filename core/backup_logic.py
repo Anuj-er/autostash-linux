@@ -15,7 +15,7 @@ class BackupManager:
         self.repo_path = os.path.expanduser("~/.autostash_repo")
         self.repo = None
         self.log_path = "/var/log/autostash"
-        self.gpg = gnupg.GPG()
+        self.gpg = gnupg.GPG(binary='/opt/homebrew/bin/gpg')
         self.incremental = True  # Default to incremental backup
         self._setup_logging()
 
