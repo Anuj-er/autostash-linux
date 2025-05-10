@@ -46,6 +46,12 @@
 
 AutoStash is a Linux backup solution developed as our team project for the Linux System Programming course. It demonstrates our understanding of Linux system programming concepts, including file operations, process management, and system monitoring.
 
+<div align="center">
+    
+<img src="project_files/screenshot.png" alt="Pharmacy Management System" width="600">
+    
+</div>
+
 ### ✨ Key Features
 
   
