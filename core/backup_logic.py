@@ -15,7 +15,10 @@ class BackupManager:
         self.repo_path = os.path.expanduser("~/.autostash_repo")
         self.repo = None
         self.log_path = "/var/log/autostash"
-        self.gpg = gnupg.GPG(binary='/opt/homebrew/bin/gpg')
+        self.gpg = gnupg.GPG(
+            binary='/opt/homebrew/bin/gpg',
+            homedir=os.path.expanduser('~/.gnupg')
+        )
         self.incremental = True  # Default to incremental backup
         self._setup_logging()
 
@@ -471,11 +474,12 @@ class BackupManager:
                     # Encrypt the backup
                     if compress:
                         with open(tar_path, 'rb') as f:
-                            encrypted_data = self.gpg.encrypt_file(
-                                f,
-                                recipients=[key],
-                                output=tar_path + ".gpg"
-                            )
+                            data = f.read()
+                            encrypted_data = self.gpg.encrypt(data, key)
+                            if not encrypted_data.ok:
+                                raise Exception(f"Encryption failed: {encrypted_data.status}")
+                            with open(tar_path + ".gpg", 'wb') as f:
+                                f.write(encrypted_data.data)
                         os.remove(tar_path)  # Remove the unencrypted tar
                     else:
                         # Encrypt each file individually (except metadata)
@@ -484,11 +488,12 @@ class BackupManager:
                                 if file not in ["metadata.json", "metadata.json.tmp"]:
                                     file_path = os.path.join(root, file)
                                     with open(file_path, 'rb') as f:
-                                        encrypted_data = self.gpg.encrypt_file(
-                                            f,
-                                            recipients=[key],
-                                            output=file_path + ".gpg"
-                                        )
+                                        data = f.read()
+                                        encrypted_data = self.gpg.encrypt(data, key)
+                                        if not encrypted_data.ok:
+                                            raise Exception(f"Encryption failed for {file_path}: {encrypted_data.status}")
+                                        with open(file_path + ".gpg", 'wb') as f:
+                                            f.write(encrypted_data.data)
                                     os.remove(file_path)  # Remove the unencrypted file
 
             # Restore metadata file
@@ -974,7 +979,7 @@ class BackupManager:
                         try:
                             # Decrypt the file
                             with open(encrypted_compressed_file, 'rb') as f:
-                                decrypted_data = self.gpg.decrypt_file(f)
+                                decrypted_data = self.gpg.decrypt(f.read())
                             with open(temp_file, 'wb') as f:
                                 f.write(decrypted_data.data)
                             
@@ -1035,7 +1040,7 @@ class BackupManager:
                                         # Decrypt the file
                                         decrypted_file = os.path.join(dest_dir, file[:-4])  # Remove .gpg extension
                                         with open(source_file, 'rb') as f:
-                                            decrypted_data = self.gpg.decrypt_file(f)
+                                            decrypted_data = self.gpg.decrypt(f.read())
                                         
                                         if needs_sudo:
                                             # Write to a temporary file first
@@ -1132,7 +1137,7 @@ class BackupManager:
                             # For encrypted files, verify they can be decrypted
                             if item.path.endswith('.gpg'):
                                 try:
-                                    self.gpg.decrypt_file(file_content)
+                                    self.gpg.decrypt(file_content)
                                 except Exception as e:
                                     raise Exception(f"Failed to decrypt: {item.path}")
                     
